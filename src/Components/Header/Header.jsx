@@ -1,0 +1,86 @@
+// images
+import logo from '../../assets/images/LOGO.png'
+
+// css
+import './Header.css'
+
+// router
+import { NavLink } from 'react-router-dom'
+
+// icons
+import { FiPhone, FiHome } from "react-icons/fi";
+import { FaRegUser } from "react-icons/fa";
+import { IoMenuSharp } from "react-icons/io5";
+import { MdOutlineReceiptLong } from "react-icons/md";
+import { BsAirplaneEngines } from "react-icons/bs";
+
+// context
+import { useContext } from 'react';
+import { headerData } from '../../Context/header';
+
+function HeaderItems({ title, link }) {
+  return (
+    <NavLink to={link} end className={({ isActive }) => isActive ? 'header-item active' : 'header-item'}>
+      {title}
+    </NavLink>
+  )
+}
+
+function MobileSidebarItem({ title, icon, link }) {
+  return (
+    <NavLink to={link} end className={({ isActive }) => isActive ? 'mobile-sidebar-item active' : 'mobile-sidebar-item'}>
+      {icon}
+      <span>{title}</span>
+    </NavLink>
+  )
+}
+
+function Header() {
+
+  // context
+  let context = useContext(headerData)
+
+  return (
+    <>
+      <header className='d-flex align-items-center justify-content-center'>
+        <div className='container-xl container-fluid d-flex justify-content-between align-items-center'>
+          <nav className="left d-lg-flex d-none align-items-center gap-4">
+            <button className='btn--primary'>
+              <span>login / register</span>
+              <FaRegUser />
+            </button>
+            <div className="call d-flex justify-content-center align-items-center gap-2">
+              <FiPhone />
+              <span>support 021-4045</span>
+            </div>
+          </nav>
+          <nav className="right d-lg-flex d-none align-items-center gap-5">
+            <ul className='d-flex align-items-center gap-3 m-0'>
+              <HeaderItems title="my travels" link="/dds" />
+              <HeaderItems title="Travel insurance" link="/dd" />
+              <HeaderItems title="Home" link="/" />
+            </ul>
+            <img src={logo} alt="logo" />
+          </nav>
+          <div className="mobile-header d-lg-none d-flex align-align-items-center justify-content-between w-100">
+            <IoMenuSharp onClick={() => context.setIsHeaderOpen(prev => !prev)} />
+            <img className='mobile-logo' src={logo} alt="logo" />
+            <FaRegUser className='mobile-user' />
+          </div>
+        </div>
+      </header>
+
+      <div className={context.isHeaderOpen ? 'mobile-sidebar active' : 'mobile-sidebar'}>
+        <MobileSidebarItem icon={<FiHome />} title="Home" link="/" />
+        <MobileSidebarItem icon={<MdOutlineReceiptLong />} title="Travel insurance" link="/dd" />
+        <MobileSidebarItem icon={<BsAirplaneEngines />} title="my travels" link="/dds" />
+        <button className='btn--primary justify-content-center position-absolute'>
+          <span>login / register</span>
+          <FaRegUser />
+        </button>
+      </div>
+    </>
+  )
+}
+
+export default Header

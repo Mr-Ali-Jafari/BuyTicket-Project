@@ -1,0 +1,114 @@
+:root {
+    --primary: #1D91CC;
+
+    --tint1: #E8F4FA;
+    --tint2: #D2E9F5;
+    --tint3: #BBDEF0;
+    --tint4: #A5D3EB;
+    --tint5: #77BDE0;
+
+    --shade1: #1774A3;
+    --shade2: #11577A;
+    --shade3: #0C3A52;
+    --shade4: #092B3D;
+    --shade5: #061D29;
+
+    --white: #fff;
+    --gray1: #F9F9F9;
+    --gray2: #EDEDED;
+    --gray3: #DFDFDF;
+    --gray4: #CBCBCB;
+    --gray5: #ADADAD;
+    --gray6: #868686;
+    --gray7: #606060;
+    --gray8: #404040;
+    --gray9: #202020;
+    --black: #0C0C0C;
+
+    --error: #C30000;
+    --errorLight1: #ED2E2E;
+    --errorLight2: #FFF2F2;
+    
+    --success: #00966D;
+    --successLight1: #00BA88;
+    --successLight2: #F3FDFA;
+
+    --warning: #A9791C;
+    --warningLight1: #F4B740;
+    --warningLight2: #FFF8E1;
+}
+
+body {
+    font-family: 'Poppins' !important;
+}
+
+* {
+    box-sizing: border-box !important;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-Thin.ttf);
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-ExtraLight.ttf);
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-Light.ttf);
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-Regular.ttf);
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-Medium.ttf);
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-SemiBold.ttf);
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-Bold.ttf);
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-ExtraBold.ttf);
+    font-weight: 800;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Poppins";
+    src: url(./assets/Fonts/Poppins-Black.ttf);
+    font-weight: 900;
+    font-style: normal;
+}

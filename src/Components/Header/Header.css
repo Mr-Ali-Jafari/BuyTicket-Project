@@ -1,0 +1,105 @@
+header {
+    height: 104px;
+    width: 100%;
+    background: var(--white);
+    z-index: 3;
+}
+
+header .header-item {
+    color: var(--gray7);
+    border-bottom: 2px solid var(--white);
+    font-size: 1.2rem;
+    transition: 500ms;
+}
+
+header .header-item.active,
+header .header-item:hover {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+}
+
+header .call {
+    color: var(--gray7);
+    font-size: 1.1rem;
+}
+
+header .call svg {
+    width: 25px;
+    height: 25px;
+}
+
+.btn--primary {
+    border: 0;
+    outline: none;
+    background: var(--primary);
+    color: var(--white);
+    border-radius: 5px;
+    padding: 9px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn--primary svg {
+    width: 16px;
+    height: 16px;
+}
+
+.mobile-header svg {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.mobile-header svg.mobile-user {
+    color: var(--shade2);
+    background: var(--tint1);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+header .mobile-logo {
+    width: 100px;
+}
+
+.mobile-sidebar {
+    z-index: 2;
+    width: 100%;
+    height: 100vh;
+    transition: 500ms ease;
+    padding: 25px;
+    border-top: 2px solid var(--gray2);
+    background: var(--white);
+    position: fixed;
+    transform: translateY(100vh);
+}
+
+.mobile-sidebar.active {
+    transform: translateY(0);
+}
+
+.mobile-sidebar .mobile-sidebar-item {
+    display: block;
+    margin-top: 20px;
+    color: var(--gray8);
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    transition: 500ms;
+    font-size: 1.2rem;
+}
+
+.mobile-sidebar .mobile-sidebar-item.active {
+    color: var(--primary);
+}
+
+.mobile-sidebar > button {
+    margin-top: 20px;
+    width: 50%;
+}
+
+@media screen and (max-width: 992px) {
+    header {
+        height: 60px;
+    }
+}

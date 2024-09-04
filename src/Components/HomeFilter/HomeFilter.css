@@ -1,0 +1,98 @@
+.filter-box {
+    width: 80%;
+    height: auto;
+    max-width: 85%;
+    background-color: var(--white);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.671);
+    border-radius: 8px;
+    padding: 25px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.filter-box .home-filter-item {
+    cursor: pointer;
+    transition: 500ms;
+    color: var(--gray5);
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding-bottom: 4px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+}
+
+
+.filter-box .home-filter-item.active svg {
+    transition: 400ms;
+}
+
+.filter-box .home-filter-item.active,
+.filter-box .home-filter-item:hover {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+}
+
+.filter-box .home-filter-item.active svg {
+    width: 25px;
+    height: 25px;
+}
+
+.filter-box hr {
+    height: 2px;
+    background-color: var(--gray2);
+    margin-bottom: 1rem;
+    margin-top: 0;
+}
+
+.btn--outline {
+    border: 2px solid var(--primary);
+    color: var(--shade3);
+    font-size: 1.1rem;
+    cursor: pointer;
+    background-color: transparent;
+    outline: none;
+    padding: 8px;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: 500ms;
+}
+
+.btn--outline:hover,
+.btn--outline.active {
+    color: var(--white);
+    background-color: var(--primary);
+}
+
+.filter-input {
+    color: var(--gray8);
+    border: 2px solid var(--gray3);
+    padding: 8px;
+    border-radius: 5px;
+    width: 100%;
+    outline: none;
+}
+
+.filter-input:focus {
+    border-color: var(--primary);
+}
+
+
+.filter-input:focus::placeholder {
+    color: var(--primary);
+}
+
+.filter-box .btn--primary {
+    width: 100%;
+    justify-content: center;
+}
+
+@media screen and (max-width:768px) {
+    .filter-box .btns {
+        text-align: center;
+    }
+
+    .filter-box .home-filter-item svg {
+        display: none;
+    }
+}
