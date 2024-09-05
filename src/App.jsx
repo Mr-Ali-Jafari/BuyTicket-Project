@@ -11,9 +11,10 @@ import routes from './router'
 // components
 import Header from './Components/Header/Header'
 import HeaderMobile from './Components/Header/HeaderMobile/HeaderMobile'
+import Login from './Components/Login/Login'
 
 // context
-import {HeaderProvider} from './Context/header'
+import { HeaderProvider } from './Context/header'
 
 function App() {
   let router = useRoutes(routes)
@@ -22,6 +23,7 @@ function App() {
       <HeaderProvider>
         <HeaderMobile />
         <Header />
+        <Login />
       </HeaderProvider>
       {router}
     </>

@@ -35,7 +35,7 @@ function Header() {
       <header className='d-flex align-items-center justify-content-center'>
         <div className='container-xl container-fluid d-flex justify-content-between align-items-center'>
           <nav className="left d-lg-flex d-none align-items-center gap-4">
-            <button className='btn--primary'>
+            <button onClick={() => context.setIsLoginOpen(true)} className='btn--primary'>
               <span>login / register</span>
               <FaRegUser />
             </button>

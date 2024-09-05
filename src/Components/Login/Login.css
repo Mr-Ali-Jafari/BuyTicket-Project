@@ -1,0 +1,99 @@
+.login {
+    opacity: 0;
+    pointer-events: none;
+    transition: 500ms ease;  
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.login.active{
+    opacity: 1 !important;
+    pointer-events: all !important;
+}
+
+.login .ovarlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 4;
+    cursor: pointer;
+    width: 100%;
+    height: 100vh;
+}
+
+.login-div {
+    z-index: 5;
+    position: absolute;
+    width: 600px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    border-radius: 8px;
+    padding: 20px;
+    align-items: center;
+}
+
+.login-div img {
+    width: 100px;
+    margin-bottom: 30px;
+}
+
+.login-div .title {
+    margin-bottom: 40px;
+    color: var(--gray8);
+}
+
+.login-div .hint {
+    color: var(--gray7);
+}
+
+.login-div input[type="text"] {
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    outline: none;
+    color: var(--gray8);
+    padding: 2px 15px;
+    height: 48px;
+}
+
+.login-div input[type="text"]::placeholder {
+    color: var(--primary);
+}
+
+.login-div .error {
+    color: var(--errorLight1);
+    margin-bottom: 9px;
+}
+
+.login-div input[type="checkbox"] {
+    width: 25px;
+    height: 25px;
+    accent-color: var(--primary);
+    vertical-align: middle;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    border: 2px solid var(--primary);
+    border-radius: 10px;
+    transform: rotate(10deg);
+}
+
+.login-div input[type="checkbox"]:checked {
+    background-color: var(--primary);
+}
+
+.login-div button {
+    cursor: pointer;
+}
+
+.login-div button:disabled {
+    background-color: var(--gray2);
+    color: var(--gray5);
+}
