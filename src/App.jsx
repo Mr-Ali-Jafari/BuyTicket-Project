@@ -10,6 +10,7 @@ import routes from './router'
 
 // components
 import Header from './Components/Header/Header'
+import HeaderMobile from './Components/Header/HeaderMobile/HeaderMobile'
 
 // context
 import {HeaderProvider} from './Context/header'
@@ -19,6 +20,7 @@ function App() {
   return (
     <>
       <HeaderProvider>
+        <HeaderMobile />
         <Header />
       </HeaderProvider>
       {router}

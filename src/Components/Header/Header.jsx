@@ -8,11 +8,9 @@ import './Header.css'
 import { NavLink } from 'react-router-dom'
 
 // icons
-import { FiPhone, FiHome } from "react-icons/fi";
+import { FiPhone } from "react-icons/fi";
 import { FaRegUser } from "react-icons/fa";
-import { IoMenuSharp } from "react-icons/io5";
-import { MdOutlineReceiptLong } from "react-icons/md";
-import { BsAirplaneEngines } from "react-icons/bs";
+import { IoMenuSharp, IoCloseSharp } from "react-icons/io5";
 
 // context
 import { useContext } from 'react';
@@ -26,14 +24,6 @@ function HeaderItems({ title, link }) {
   )
 }
 
-function MobileSidebarItem({ title, icon, link }) {
-  return (
-    <NavLink to={link} end className={({ isActive }) => isActive ? 'mobile-sidebar-item active' : 'mobile-sidebar-item'}>
-      {icon}
-      <span>{title}</span>
-    </NavLink>
-  )
-}
 
 function Header() {
 
@@ -63,22 +53,14 @@ function Header() {
             <img src={logo} alt="logo" />
           </nav>
           <div className="mobile-header d-lg-none d-flex align-align-items-center justify-content-between w-100">
-            <IoMenuSharp onClick={() => context.setIsHeaderOpen(prev => !prev)} />
+            {context.isHeaderOpen ?
+              <IoCloseSharp onClick={() => context.setIsHeaderOpen(prev => !prev)} />
+              : <IoMenuSharp onClick={() => context.setIsHeaderOpen(prev => !prev)} />}
             <img className='mobile-logo' src={logo} alt="logo" />
             <FaRegUser className='mobile-user' />
           </div>
         </div>
       </header>
-
-      <div className={context.isHeaderOpen ? 'mobile-sidebar active' : 'mobile-sidebar'}>
-        <MobileSidebarItem icon={<FiHome />} title="Home" link="/" />
-        <MobileSidebarItem icon={<MdOutlineReceiptLong />} title="Travel insurance" link="/dd" />
-        <MobileSidebarItem icon={<BsAirplaneEngines />} title="my travels" link="/dds" />
-        <button className='btn--primary justify-content-center position-absolute'>
-          <span>login / register</span>
-          <FaRegUser />
-        </button>
-      </div>
     </>
   )
 }

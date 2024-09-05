@@ -3,6 +3,11 @@ header {
     width: 100%;
     background: var(--white);
     z-index: 3;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    box-shadow: 0 2px 16px 0 rgba(0, 0, 0, 0.432);
 }
 
 header .header-item {
@@ -60,42 +65,6 @@ header .call svg {
 
 header .mobile-logo {
     width: 100px;
-}
-
-.mobile-sidebar {
-    z-index: 2;
-    width: 100%;
-    height: 100vh;
-    transition: 500ms ease;
-    padding: 25px;
-    border-top: 2px solid var(--gray2);
-    background: var(--white);
-    position: fixed;
-    transform: translateY(100vh);
-}
-
-.mobile-sidebar.active {
-    transform: translateY(0);
-}
-
-.mobile-sidebar .mobile-sidebar-item {
-    display: block;
-    margin-top: 20px;
-    color: var(--gray8);
-    display: flex;
-    align-items: center;
-    gap: 9px;
-    transition: 500ms;
-    font-size: 1.2rem;
-}
-
-.mobile-sidebar .mobile-sidebar-item.active {
-    color: var(--primary);
-}
-
-.mobile-sidebar > button {
-    margin-top: 20px;
-    width: 50%;
 }
 
 @media screen and (max-width: 992px) {

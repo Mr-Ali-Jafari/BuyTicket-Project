@@ -8,7 +8,7 @@ import './Landing.css'
 
 function Landing({ isHome, children }) {
     return (
-        <div className='landing mt-2'>
+        <div className='landing'>
             {isHome && (
                 <div className='home'>
                     <h2 className='title'>Convenience and speed in</h2>
