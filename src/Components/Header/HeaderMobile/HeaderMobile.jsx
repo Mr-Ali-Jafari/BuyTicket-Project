@@ -36,7 +36,7 @@ function HeaderMobile() {
                     <MobileSidebarItem icon={<BsAirplaneEngines />} title="my travels" link="/dds" />
                     <MobileSidebarItem icon={<BsAirplaneEngines />} title="my travels" link="/dds" />
                 </div>
-                <button className='btn--primary justify-content-center'>
+                <button onClick={() => context.setIsLoginOpen(true)} className='btn--primary justify-content-center'>
                     <span>login / register</span>
                     <FaRegUser />
                 </button>

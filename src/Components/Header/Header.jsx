@@ -57,7 +57,7 @@ function Header() {
               <IoCloseSharp onClick={() => context.setIsHeaderOpen(prev => !prev)} />
               : <IoMenuSharp onClick={() => context.setIsHeaderOpen(prev => !prev)} />}
             <img className='mobile-logo' src={logo} alt="logo" />
-            <FaRegUser className='mobile-user' />
+            <FaRegUser onClick={() => context.setIsLoginOpen(true)} className='mobile-user' />
           </div>
         </div>
       </header>

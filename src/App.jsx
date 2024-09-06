@@ -12,6 +12,7 @@ import routes from './router'
 import Header from './Components/Header/Header'
 import HeaderMobile from './Components/Header/HeaderMobile/HeaderMobile'
 import Login from './Components/Login/Login'
+import CheckCode from './Components/Login/CheckCode'
 
 // context
 import { HeaderProvider } from './Context/header'
@@ -24,6 +25,7 @@ function App() {
         <HeaderMobile />
         <Header />
         <Login />
+        <CheckCode />
       </HeaderProvider>
       {router}
     </>
