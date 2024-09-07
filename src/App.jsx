@@ -1,5 +1,6 @@
 // css
 import './App.css'
+import 'react-toastify/dist/ReactToastify.css';
 
 // bootstrap
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -14,6 +15,9 @@ import HeaderMobile from './Components/Header/HeaderMobile/HeaderMobile'
 import Login from './Components/Login/Login'
 import CheckCode from './Components/Login/CheckCode'
 
+// alerts
+import { ToastContainer } from 'react-toastify'
+
 // context
 import { HeaderProvider } from './Context/header'
 
@@ -27,6 +31,7 @@ function App() {
         <Login />
         <CheckCode />
       </HeaderProvider>
+      <ToastContainer />
       {router}
     </>
   )

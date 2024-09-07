@@ -13,6 +13,19 @@ import { headerData } from '../../Context/header'
 // icons
 import { IoCloseSharp } from "react-icons/io5";
 
+// alerts
+import { toast } from "react-toastify"
+let toastOption = {
+    position: "top-left",
+    autoClose: 3500,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+}
+
 // formik
 import { Formik, Form, Field, ErrorMessage } from "formik"
 import validator from "validator"
@@ -46,13 +59,32 @@ function Login() {
     let context = useContext(headerData)
 
     const submit = (values, props) => {
-        console.log(values, props);
-        context.setIsLoginOpen(false)
-        context.setIsCheckCodeOpen(true)
-        props.setSubmitting(false) 
-    }
 
-    
+        let userDate = { email: values.email }
+
+        const options = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userDate)
+        };
+
+
+        fetch(import.meta.env.VITE_API_KEY + 'login/send-code', options)
+            .then(res => {
+                if (res.status === 200) {
+                    toast.success('The verification code has been successfully sent to your account', toastOption)
+                    props.setSubmitting(false)
+                    context.setIsLoginOpen(false)
+                    context.setIsCheckCodeOpen(true)
+                } else {
+                    toast.error('Unfortunately, the operation of sending the code to the email encountered an error', toastOption)
+                    props.setSubmitting(false)
+                }
+            })
+            .catch(err => console.log(err))
+    }
 
     return createPortal(
         <div className={context.isLoginOpen ? 'login active' : 'login'}>
@@ -80,7 +112,8 @@ function Login() {
                                     <span>By entering and registering on the site, I agree with the ticket rules</span>
                                 </div>
                                 <ErrorMessage name="checkbox" className="error" component="p" />
-                                <button className="btn--primary justify-content-center w-100 mt-4" disabled={formik.isSubmitting || !formik.dirty || !formik.isValid && true} type="submit">submit</button>
+                                {/* <button className="btn--primary justify-content-center w-100 mt-4" disabled={formik.isSubmitting || !formik.dirty || !formik.isValid && true} type="submit">submit</button> */}
+                                <button className="btn--primary justify-content-center w-100 mt-4" type="submit">submit</button>
                             </Form>
                         )}
                     </Formik>
