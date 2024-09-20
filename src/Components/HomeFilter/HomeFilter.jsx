@@ -10,14 +10,13 @@ import { Col, Row } from 'react-bootstrap';
 import { BsAirplaneEngines } from "react-icons/bs";
 import { FaSearch } from "react-icons/fa";
 
-
 function HomeFilterItem({ title, icon, isActive }) {
     return (
         <p className={`home-filter-item d-flex align-items-center justify-content-center gap-2 m-0 ${isActive && 'active'}`}>
             {icon}
             {title}
         </p>
-    )
+    ) 
 }
 
 function HomeFilter() {
@@ -29,7 +28,7 @@ function HomeFilter() {
             </div>
             <hr />
             <div className="btns">
-                <button className='btn--outline'>go</button>
+                <button className='btn--outline' >go</button>
                 <button className='btn--outline active'>go and forth</button>
                 <button className='btn--outline'>multi-track</button>
             </div>

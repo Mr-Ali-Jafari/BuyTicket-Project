@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+
 // css
 import './App.css'
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,18 +23,26 @@ import { ToastContainer } from 'react-toastify'
 // context
 import { HeaderProvider } from './Context/header'
 
+// hooks 
+import useUserInfo from './hooks/useUserInfo';
+
 function App() {
   let router = useRoutes(routes)
+  const userInfo = useUserInfo()
+  useEffect(() => {
+    userInfo()
+  }, [])
+
   return (
     <>
-      <HeaderProvider>
-        <HeaderMobile />
-        <Header />
-        <Login />
-        <CheckCode />
-      </HeaderProvider>
-      <ToastContainer />
-      {router}
+        <HeaderProvider>
+          <HeaderMobile />
+          <Header />
+          <Login />
+          <CheckCode />
+        </HeaderProvider>
+        <ToastContainer />
+        {router}
     </>
   )
 }

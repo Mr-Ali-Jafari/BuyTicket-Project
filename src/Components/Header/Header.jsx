@@ -15,6 +15,7 @@ import { IoMenuSharp, IoCloseSharp } from "react-icons/io5";
 // context
 import { useContext } from 'react';
 import { headerData } from '../../Context/header';
+import { AuthContext } from '../../Context/authContext'
 
 function HeaderItems({ title, link }) {
   return (
@@ -29,6 +30,7 @@ function Header() {
 
   // context
   let context = useContext(headerData)
+  let authContext = useContext(AuthContext)
 
   return (
     <>
@@ -36,7 +38,7 @@ function Header() {
         <div className='container-xl container-fluid d-flex justify-content-between align-items-center'>
           <nav className="left d-lg-flex d-none align-items-center gap-4">
             <button onClick={() => context.setIsLoginOpen(true)} className='btn--primary'>
-              <span>login / register</span>
+              <span>{authContext.isLogin ? 'Dashboard' : 'login / register'}</span>
               <FaRegUser />
             </button>
             <div className="call d-flex justify-content-center align-items-center gap-2">

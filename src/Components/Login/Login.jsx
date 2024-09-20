@@ -1,5 +1,5 @@
 import { createPortal } from "react-dom"
-
+import Caxios from '../../Axios'
 // images
 import logo from '../../assets/images/LOGO.PNG'
 
@@ -25,6 +25,9 @@ let toastOption = {
     progress: undefined,
     theme: "light",
 }
+
+// cookies
+import Cookie from 'cookie-universal'
 
 // formik
 import { Formik, Form, Field, ErrorMessage } from "formik"
@@ -56,34 +59,36 @@ const validateForm = (values) => {
 }
 
 function Login() {
+    const cookies = Cookie()
+
     let context = useContext(headerData)
 
-    const submit = (values, props) => {
+    const submit = async (values, props) => {
+        const response = await Caxios.post('login/send-code', {
+            email: values.email
+        })
 
-        let userDate = { email: values.email }
+        if (response.status === 200) {
+            toast.success('The verification code has been successfully sent to your account', toastOption)
+            let now = (new Date().getTime() + 1000 * 60 * 10)
 
-        const options = {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userDate)
-        };
+            try {
+                cookies.set('user-email', values.email, {
+                    expires: new Date(now)
+                })
+                props.setSubmitting(false)
+                context.setIsLoginOpen(false)
+                context.setIsCheckCodeOpen(true)
+            } catch {
+                toast.error('Unfortunately, the operation of sending the code to the email encountered an error. please try again', toastOption)
+                props.setSubmitting(false)
+            }
 
 
-        fetch(import.meta.env.VITE_API_KEY + 'login/send-code', options)
-            .then(res => {
-                if (res.status === 200) {
-                    toast.success('The verification code has been successfully sent to your account', toastOption)
-                    props.setSubmitting(false)
-                    context.setIsLoginOpen(false)
-                    context.setIsCheckCodeOpen(true)
-                } else {
-                    toast.error('Unfortunately, the operation of sending the code to the email encountered an error', toastOption)
-                    props.setSubmitting(false)
-                }
-            })
-            .catch(err => console.log(err))
+        } else {
+            toast.error('Unfortunately, the operation of sending the code to the email encountered an error please try again', toastOption)
+            props.setSubmitting(false)
+        }
     }
 
     return createPortal(
@@ -112,8 +117,7 @@ function Login() {
                                     <span>By entering and registering on the site, I agree with the ticket rules</span>
                                 </div>
                                 <ErrorMessage name="checkbox" className="error" component="p" />
-                                {/* <button className="btn--primary justify-content-center w-100 mt-4" disabled={formik.isSubmitting || !formik.dirty || !formik.isValid && true} type="submit">submit</button> */}
-                                <button className="btn--primary justify-content-center w-100 mt-4" type="submit">submit</button>
+                                <button className="btn--primary justify-content-center w-100 mt-4" disabled={formik.isSubmitting || !formik.dirty || !formik.isValid && true} type="submit">submit</button>
                             </Form>
                         )}
                     </Formik>
