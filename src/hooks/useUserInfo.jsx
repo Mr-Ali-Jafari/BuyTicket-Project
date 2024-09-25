@@ -10,6 +10,7 @@ function useUserInfo() {
     let context = useContext(AuthContext)
     const refresh = useRefreshToken(true)
     async function addUserInfo() {
+        console.log('run useUserInfo')
         const cookies = Cookie()
         try {
             const response = await Caxios.get('login/current-user', {
@@ -25,6 +26,7 @@ function useUserInfo() {
             }
             console.log(response);
         } catch (err) {
+            console.log(err)
             if (err.status === 401) {
                 await refresh()
                 try {

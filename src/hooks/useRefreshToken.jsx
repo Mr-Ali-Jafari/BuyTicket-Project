@@ -11,6 +11,7 @@ function useRefreshToken(expiredDate=flase) {
 
     // check accessToken
     async function RefreshToken() {
+        console.log('run use refresh token')
         let accessToken = cookies.get('AccessToken')
         if (accessToken === undefined || expiredDate) {
             try {

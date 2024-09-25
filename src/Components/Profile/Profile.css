@@ -1,0 +1,98 @@
+.dashboard {
+    margin-top: 200px;
+}
+
+.dashboard * {
+    transition: 500ms;
+}
+
+.border-gray-4 {
+    border: 1px solid var(--gray4);
+    border-radius: 8px;
+}
+
+.dashboard p.label {
+    opacity: .7;
+}
+
+.dashboard .topbar {
+    border-bottom: 1px solid var(--gray4);
+}
+
+.dashboard .img-box .icon {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--gray4);
+    border-radius: 50%;
+    cursor: pointer;
+    top: 65%;
+    left: 35%;
+    background-color: var(--white);
+}
+
+.dashboard .img-box svg {
+    width: 20px;
+    height: 20px;
+}
+
+.dashboard .bottombar .navlink {
+    color: var(--gray8);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 5px;
+    font-size: 1.2rem;
+}
+
+.dashboard .bottombar .navlink > div {
+    align-items: center;
+    display: flex;
+    gap: 15px;
+}
+
+.dashboard .bottombar .navlink:first-child {
+    margin-top: 30px;
+}
+
+.dashboard .bottombar .navlink .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary) !important;
+    opacity: 0;
+}
+
+.dashboard .bottombar .navlink.active {
+    background-color: var(--tint1);
+    color: var(--primary);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.dashboard .bottombar .navlink.active .dot {
+    opacity: 1;
+}
+
+.dashboard .logout {
+    color: var(--error);
+    text-align: center;
+    background-color: var(--errorLight2);
+    border-radius: 4px;
+}
+
+.dashboard .logout:hover {
+    background-color: var(--errorLight1);
+    color: var(--errorLight2);   
+}
+
+@media screen and (max-width: 992px) {
+    .dashboard {
+        margin-top: 100px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .profile .col {
+        display: flex;
+    }
+}
