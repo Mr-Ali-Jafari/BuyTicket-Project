@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey,DateTime, Table,Text
 from sqlalchemy.orm import relationship, declarative_base
 from datetime import datetime
 from enum import Enum as PyEnum
+from sqlalchemy import Enum
 
 Base = declarative_base()
 
@@ -33,8 +34,10 @@ class User(Base):
     verification_code = Column(String, nullable=True) 
     code_expiration = Column(DateTime, nullable=True)  
     tickets = relationship("Ticket", back_populates="user")
-    profiles = relationship("Profile", back_populates="user")
+    profile = relationship("Profile", back_populates="user", uselist=False)  
     roles = relationship("Role", secondary=user_roles, back_populates="users")
+
+
 
 class Role(Base):
     __tablename__ = 'roles'
@@ -68,7 +71,7 @@ class Profile(Base):
     id = Column(Integer, primary_key=True, index=True)
     first_name = Column(String(50), nullable=False)
     last_name = Column(String(50), nullable=False)
-    gender = Column(PyEnum(GenderEnum), nullable=False)
+    gender = Column(Enum(GenderEnum), nullable=False)
     national_code = Column(String(10), unique=True, nullable=False)
     phone_number = Column(String(15), unique=True, nullable=False)
     username = Column(String(30), unique=True, nullable=False)
