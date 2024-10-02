@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from app.config.database.database import get_db
-from app.schemas.schemas import ProfileCreate, ProfileUpdate, ProfileResponse
+from app.schemas.schemas import ProfileCreate, ProfileUpdate, ProfileResponse,User
 from app.services.profile.profile_service import create_profile, get_profile, update_profile, delete_profile
 from app.api.login.login import get_current_user  # فرض بر اینکه سیستم احراز هویت دارید
 
@@ -12,17 +12,23 @@ router = APIRouter(
 
 
 @router.post("/create", response_model=ProfileResponse)
-def create_profile_api(profile: ProfileCreate, db: Session = Depends(get_db), current_user: dict = Depends(get_current_user)):
+def create_profile_api(profile: ProfileCreate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     if not current_user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Not authenticated"
         )
-    return create_profile(db, profile, user_id=current_user['id'])
+    return create_profile(db, profile, user_id=current_user.id)
 
 
 @router.get("/{profile_id}", response_model=ProfileResponse)
-def get_profile_api(profile_id: int, db: Session = Depends(get_db)):
+def get_profile_api(profile_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if not current_user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated"
+        )
+
     profile = get_profile(db, profile_id)
     if not profile:
         raise HTTPException(
@@ -33,7 +39,12 @@ def get_profile_api(profile_id: int, db: Session = Depends(get_db)):
 
 
 @router.put("/{profile_id}/update", response_model=ProfileResponse)
-def update_profile_api(profile_id: int, profile: ProfileUpdate, db: Session = Depends(get_db)):
+def update_profile_api(profile_id: int, profile: ProfileUpdate, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if not current_user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated"
+        )
     updated_profile = update_profile(db, profile_id, profile)
     if not updated_profile:
         raise HTTPException(
@@ -44,7 +55,12 @@ def update_profile_api(profile_id: int, profile: ProfileUpdate, db: Session = De
 
 
 @router.delete("/{profile_id}/delete")
-def delete_profile_api(profile_id: int, db: Session = Depends(get_db)):
+def delete_profile_api(profile_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+    if not current_user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Not authenticated"
+        )
     deleted_profile = delete_profile(db, profile_id)
     if not deleted_profile:
         raise HTTPException(
