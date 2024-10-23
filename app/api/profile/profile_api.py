@@ -29,7 +29,7 @@ def get_profile_api(profile_id: int, db: Session = Depends(get_db), current_user
             detail="Not authenticated"
         )
 
-    profile = get_profile(db, profile_id)
+    profile = get_profile(db, current_user.id)
     if not profile:
         raise HTTPException(
             status_code=status.HTTP_404_NOT_FOUND,

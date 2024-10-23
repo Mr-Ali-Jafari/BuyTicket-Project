@@ -1,9 +1,15 @@
+from fastapi import HTTPException
 from sqlalchemy.orm import Session
 from app.models.models import Profile
 from app.schemas.schemas import ProfileCreate, ProfileUpdate
 
 
 def create_profile(db: Session, profile_data: ProfileCreate, user_id: int):
+    db_user = db.query(Profile).filter(Profile.username == profile_data.username).first()
+
+    if db_user:
+        raise HTTPException(status_code=400,detail='This username is Exists please change username field')
+    
     new_profile = Profile(
         first_name=profile_data.first_name,
         last_name=profile_data.last_name,
