@@ -21,14 +21,15 @@ def create_profile_api(profile: ProfileCreate, db: Session = Depends(get_db), cu
     return create_profile(db, profile, user_id=current_user.id)
 
 
-@router.get("/{profile_id}", response_model=ProfileResponse)
-def get_profile_api(profile_id: int, db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
+@router.get("/me", response_model=ProfileResponse)
+def get_profile_api(db: Session = Depends(get_db), current_user: User = Depends(get_current_user)):
     if not current_user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Not authenticated"
         )
 
+    # Now calls `get_profile` with `user_id`
     profile = get_profile(db, current_user.id)
     if not profile:
         raise HTTPException(
@@ -36,6 +37,7 @@ def get_profile_api(profile_id: int, db: Session = Depends(get_db), current_user
             detail="Profile not found"
         )
     return profile
+
 
 
 @router.put("/{profile_id}/update", response_model=ProfileResponse)
