@@ -22,7 +22,6 @@ import { ToastContainer } from 'react-toastify'
 
 // context
 import { HeaderProvider } from './Context/header'
-
 // hooks 
 import useUserInfo from './hooks/useUserInfo';
 
@@ -35,14 +34,14 @@ function App() {
 
   return (
     <>
-        <HeaderProvider>
-          <HeaderMobile />
-          <Header />
-          <Login />
-          <CheckCode />
-        </HeaderProvider>
-        <ToastContainer />
-        {router}
+      <HeaderProvider>
+        <HeaderMobile />
+        <Header />
+        <Login />
+        <CheckCode />
+      </HeaderProvider>
+      <ToastContainer />
+      {router}
     </>
   )
 }

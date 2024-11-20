@@ -5,7 +5,7 @@ import Cookie from 'cookie-universal'
 import Caxios from '../Axios'
 
 
-function useRefreshToken(expiredDate=flase) {
+function useRefreshToken(expiredDate = flase) {
     const cookies = Cookie()
 
 
@@ -18,7 +18,7 @@ function useRefreshToken(expiredDate=flase) {
                 const response = await Caxios.post('login/token/refresh', {}, {
                     headers: { Authorization: `Bearer ${cookies.get('RefreshToken')}` }
                 })
-                console.log(response.data)
+                // console.log(response.data)
                 cookies.set('AccessToken', response.data.access_token)
             } catch (err) {
                 if (err.status === 401) {

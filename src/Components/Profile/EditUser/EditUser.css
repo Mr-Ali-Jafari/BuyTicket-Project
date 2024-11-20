@@ -1,0 +1,42 @@
+.dashboard .back-svg {
+    width: 25px;
+    height: 25px;
+    padding: 3px;
+    box-shadow: 0 0 3px 2px var(--gray5);
+    cursor: pointer;
+}
+
+.dashboard .user-form input,
+.dashboard .user-form select {
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px 9px;
+    outline: none;
+    border: 2px solid var(--gray7);
+    color: var(--gray8);
+    height: 50px;
+}
+
+.dashboard .user-form input:focus {
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+
+.dashboard .user-form button {
+    border-radius: 5px;
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.dashboard .user-form button:hover {
+    color: var(--white);
+    background-color: var(--primary);
+}
+
+.dashboard .err {
+    color: var(--errorLight1);
+}

@@ -5,7 +5,7 @@ import logo from '../../assets/images/LOGO.png'
 import './Header.css'
 
 // router
-import { NavLink } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 
 // icons
 import { FiPhone } from "react-icons/fi";
@@ -27,6 +27,7 @@ function HeaderItems({ title, link }) {
 
 
 function Header() {
+  const navigate = useNavigate()
 
   // context
   let context = useContext(headerData)
@@ -37,7 +38,7 @@ function Header() {
       <header className='d-flex align-items-center justify-content-center'>
         <div className='container-xl container-fluid d-flex justify-content-between align-items-center'>
           <nav className="left d-lg-flex d-none align-items-center gap-4">
-            <button onClick={() => context.setIsLoginOpen(true)} className='btn--primary'>
+            <button onClick={authContext.isLogin ? () => navigate('/dashboard') : () => context.setIsLoginOpen(true)} className='btn--primary'>
               <span>{authContext.isLogin ? 'Dashboard' : 'login / register'}</span>
               <FaRegUser />
             </button>

@@ -16,6 +16,7 @@ function useUserInfo() {
             const response = await Caxios.get('login/current-user', {
                 headers: { Authorization: `Bearer ${cookies.get('AccessToken')}` }
             })
+            // console.log(response)
 
             if (response.status === 200) {
                 context.setUserInfo({
@@ -24,9 +25,9 @@ function useUserInfo() {
                 })
                 context.setIsLogin(true)
             }
-            console.log(response);
+            // console.log(response);
         } catch (err) {
-            console.log(err)
+            // console.log(err)
             if (err.status === 401) {
                 await refresh()
                 try {

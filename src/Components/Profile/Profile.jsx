@@ -14,11 +14,11 @@ import { FiMessageCircle } from "react-icons/fi";
 import user from '../../assets/images/user.png'
 
 // router
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 function NavlinkDiv({ title, icon, link }) {
     return (
-        <NavLink className="navlink" activeClassName="active" end to={link}>
+        <NavLink className="navlink" activeclassname="active" end to={link}>
             <div>
                 {icon}
                 <span className="title">{title}</span>
@@ -45,8 +45,16 @@ function Profile() {
                 </div>
                 <Row className='row-gap-sm-4 row-gap-2'>
                     <Col sm={6} xs={12}>
-                        <p className="label m-0 mb-0 mb-sm-1">name and lastname</p>
-                        <p className="info m-0 fw-bold">alireza aghdam</p>
+                        <p className="label m-0 mb-0 mb-sm-1">name</p>
+                        <p className="info m-0 fw-bold">alireza</p>
+                    </Col>
+                    <Col sm={6} xs={12}>
+                        <p className="label m-0 mb-0 mb-sm-1">lastname</p>
+                        <p className="info m-0 fw-bold">aghdam</p>
+                    </Col>
+                    <Col sm={6} xs={12}>
+                        <p className="label m-0 mb-0 mb-sm-1">username</p>
+                        <p className="info m-0 fw-bold">@alireza_aghdam</p>
                     </Col>
                     <Col sm={6} xs={12}>
                         <p className="label m-0 mb-0 mb-sm-1">gender</p>
@@ -61,7 +69,7 @@ function Profile() {
                         <p className="info m-0 fw-bold">09384955054</p>
                     </Col>
                 </Row>
-                <a href="#" className='d-flex gap-2 align-items-center mt-3 mt-lg-0'><LuPencil />Change Information </a>
+                <Link to="edit-info" className='d-flex gap-2 align-items-center mt-3 mt-lg-0'><LuPencil />Change Information </Link>
             </div>
         </>
     )

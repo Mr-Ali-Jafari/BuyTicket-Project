@@ -17,6 +17,10 @@ import { AuthContext } from '../../Context/authContext'
 // cookies
 import Cookie from 'cookie-universal'
 
+// router
+import { useNavigate } from "react-router-dom";
+
+
 // toast
 import { toast } from 'react-toastify'
 let toastOption = {
@@ -41,6 +45,7 @@ function CheckCode() {
 
     const userInfo = useUserInfo()
     let context = useContext(headerData)
+    const navigate = useNavigate();
 
     let num1 = useRef()
     let num2 = useRef()
@@ -98,6 +103,9 @@ function CheckCode() {
                     toast.success('You have successfully logged into your account', toastOption)
                     // save user info 
                     userInfo()
+                    context.setIsCheckCodeOpen(false)
+                    navigate('/dashboard')
+
                 }
             } catch (err) {
                 console.log(err);
